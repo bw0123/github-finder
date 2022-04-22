@@ -15,13 +15,13 @@ export const GithubProvider = ({children}) => {
     const [state, dispatch] = useReducer(githubReducer, initialState);
 
     // Get search results
-    // When we call searchUsers we recieve text passed, and set it to q: 
+    // searchUsers takes in text input and sets q to take the text
 
     const searchUsers = async (text) => {
         setLoading()
 
         const params = new URLSearchParams({
-            q: text
+            q: text,
         })
         
         const response = await fetch(`${GITHUB_URL}/search/users/$`, {
@@ -38,6 +38,11 @@ export const GithubProvider = ({children}) => {
         })
     }
 
+    // Clear users from state
+    const clearUsers = () => dispatch({
+        type: 'CLEAR_USERS'
+    })
+
     // Set loading
     const setLoading = () => dispatch({type:
         'SET_LOADING'})
@@ -47,6 +52,7 @@ export const GithubProvider = ({children}) => {
             users: state.users,
             loading: state.loading,
             searchUsers,
+            clearUsers,
         }}>
             {children}
         </GithubContext.Provider>
