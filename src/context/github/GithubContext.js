@@ -16,7 +16,6 @@ export const GithubProvider = ({children}) => {
 
     // Get search results
     // searchUsers takes in text input and sets q to take the text
-
     const searchUsers = async (text) => {
         setLoading()
 
