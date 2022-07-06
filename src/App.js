@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Alert from './components/layout/Alert'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -20,6 +20,11 @@ function App() {
           <Navbar />
             <main className='container mx-auto px-3 pb-12'>
                 <Routes>
+                  <Route path='/' element={<>
+                      <Alert />
+                      <Home />
+                    </>}
+                  />
                   <Route path='/' element={<Home />} />
                   <Route path='/about' element={<About />} />
                   <Route path='/user:/login' element={User} />
